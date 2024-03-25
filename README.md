@@ -1,24 +1,23 @@
-# README
+# Overview
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This application is our way to keep track of our silly little convention from year to year.
 
-Things you may want to cover:
+## To Run
+- Requires 
+  - Ruby 3.2.2
+  - Ruby on Rails
+  - PostgreSQL
 
-* Ruby version
+### Start up
+``` 
+bundle install
+rails db:setup
+rails server 
+```
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Future Updates
+- [Events pages](https://pixso.net/app/prototype/hjFctg-v8bI0SX-QYdDg_A?pageId=0%3A1&zm=0.960&lp=1&fi=0&hl=0&sa=0&su=1)
+  - List up and coming events
+  - List of Events are paged by time slot
+- Setup local dev Docker file and docker compose
+- Gaming Year add Dates for Convention
