@@ -1,0 +1,23 @@
+<h1>A new event has appeared!</h1>
+
+<p>Please review the following game: </p>
+<dl>
+  <dt>GM</dt>
+  <dd><%= @event.user.name %></dd>
+
+  <dt>Event Title</dt>
+  <dd><%= @event.title %></dd>
+
+  <dt>Event System</dt>
+  <dd><%= @event.system_name %></dd>
+
+  <dt>Game Type</dt>
+  <dd><%= @event.game_type %></dd>
+
+  <dt>Event Description</dt>
+  <dd>
+    <%= @event.description %>
+  </dd>
+</dl>
+
+<%= link_to 'Review Event', event_url(@event) %>

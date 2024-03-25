@@ -1,0 +1,9 @@
+<%= simple_form_for @gaming_year, url: @gaming_year.new_record? ? gaming_years_path : gaming_year_path(@gaming_year) do |f| %>
+  <%= f.input :year, wrapper_html: { class: 'field-group'} %>
+  <% if !@gaming_year.new_record? %>
+    <%= f.input :signup_key, as: :string, input_html: { disabled: true }, wrapper_html: { class: 'field-group'} %>
+  <% end %>
+  <%= f.input :active, wrapper_html: { class: 'field-group'} %>
+  <%= f.input :seating_open, wrapper_html: { class: 'field-group'} %>
+  <%= f.submit class: 'btn' %>
+<% end %>

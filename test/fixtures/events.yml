@@ -1,0 +1,40 @@
+# == Schema Information
+#
+# Table name: events
+#
+#  id              :bigint           not null, primary key
+#  title           :string
+#  description     :text
+#  seats_available :integer
+#  user_id         :bigint           not null
+#  supplies_needed :text
+#  virtual         :boolean
+#  table           :string
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  day             :string
+#  willing_slots   :text
+#  gaming_year_id  :bigint           not null
+#  game_type       :string
+#  system_name     :string
+#  gm_needs        :text
+#  event_length    :integer
+#  start_time      :datetime
+#
+
+one:
+  title: MyString
+  description: MyText
+
+  user: one
+  supplies_needed: MyText
+  virtual: false
+  table: MyString
+
+two:
+  title: MyString
+  description: MyText
+  user: two
+  supplies_needed: MyText
+  virtual: false
+  table: MyString

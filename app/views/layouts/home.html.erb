@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <%= render 'layouts/head' %>
+
+  <body style='background-image: url("<%= asset_path('paper-background.jpg') %>")'>
+    <%= render 'layouts/head_nav' %>
+    <div class='hero-banner' style='background-image: url("<%= asset_path('wargaming.jpg')%>")'>
+      <div class='main-logo'>
+        <%= image_tag 'FriendCon2023.png'  %>
+      </div>
+      <div class='hero-banner-text'>
+        <h2>A Weekend of Adventure</h2>
+        <p>Nov 3rd - 5th</p>
+      </div>
+    </div>
+    <main>
+      <div class='container'>  
+        <%= yield %>
+      </div>
+    </main>
+    <footer>
+      <div class='container'>
+        <div class='attribution bg'>
+          <a href="https://www.freepik.com/free-photo/vintage-grunge-paper-background_5405364.htm#query=old%20paper&position=0&from_view=keyword&track=ais">Background Image by kjpargeter</a> on Freepik
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,12 @@
+<h2>Edit User: <%= @user.name %></h2>
+
+<%= simple_form_for @user do |f| %>
+  <%= f.input :name, wrapper_html: { class: "field-group"} %>
+  <%= f.input :email, wrapper_html: { class: "field-group"} %>
+  <%= f.input :shirt_size, as: :select, collection: shirt_sizes, wrapper_html: { class: "field-group"} %>
+  <%= f.input :attending_virtually, wrapper_html: { class: "field-group"} %>
+
+  <%= f.association :roles, as: :check_boxes, wrapper_html: { class: "field-group"} %>
+
+  <%= f.submit class: "btn" %>
+<% end %>

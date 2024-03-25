@@ -1,0 +1,41 @@
+<h2><%= @event.title%></h2>
+
+<% if can? :update, @event %>
+  <%= link_to 'Edit Event', edit_event_path(@event), class: "btn" %>
+<% end %>
+
+<% if @event.user != current_user && @event.seating_open %>
+  <%= link_to seats_path(user_id: current_user.id, event_id: @event.id), data: { turbo_method: 'post' }, class: "btn", disabled: current_user.already_seated(@event) do %>
+    <%= current_user.already_seated(@event) ? 'Unavailable' : 'Take a Seat'%>
+  <% end %>
+<% end %>
+
+<% if current_user.seated_at_event(@event)%>
+  <%= link_to 'Leave Table', current_user.seat(@event), class:'btn', data: { turbo_method: 'delete' }%>
+<% end %>
+
+<h3>Description</h3>
+<p>
+  <%= @event.description%>
+</p>
+
+<h3>Date / Time Slot </h3>
+<p><%= @event.time_slot %></p>
+
+<h3>Seats Available</h3>
+<p><%= @event.seating_numbers %></p>
+
+<h3>Game Master</h3>
+<p><%= @event.user.name %></p>
+
+<% if current_user.role?(:admin) %>
+  <h3>Supplies Needed</h3>
+  <p><%= @event.supplies_needed %></p>
+<% end %>
+
+<h3>Attendees</h3>
+<ul>
+  <% @event.seats.each do |seat| %>
+    <li><%= seat.user.name %></li>
+  <% end %>
+</ul>

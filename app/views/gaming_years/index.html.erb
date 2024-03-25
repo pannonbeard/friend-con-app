@@ -1,0 +1,31 @@
+<h2>Gaming Years</h2>
+<%= link_to 'Add Gaming Year', new_gaming_year_path, class: 'btn' %>
+<%= link_to 'Back to Admin', admin_path, class: 'btn' %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Year</th>
+      <th>Sign Up Key</th>
+      <th>Sign Up Link</th>
+      <th>Active</th>
+      <th>Seating Open</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @gaming_years.each do |gy| %>
+      <tr>
+        <td data-label='Year'><%= gy.year %></td>
+        <td data-label='Sign Up Key'><%= gy.signup_key %></td>
+        <td data-label='Sign Up Link'><%= link_to 'Sign up link', new_user_registration_path(key: gy.signup_key) %></td>
+        <td data-label='Active'><%= gy.active? ? 'Active' : 'In Active' %></td>
+        <td data-label='Seating Open'><%= gy.seating_open? ? 'Open' : 'Closed' %></td>
+        <td data-label='Actions'>
+          <%= link_to 'Edit', edit_gaming_year_path(gy), class: 'btn' %>
+          <%= link_to 'Remove', gy, class: 'btn', data: { turbo_method: :delete, confirm: 'Are you sure you want to remove this year?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

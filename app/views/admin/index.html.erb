@@ -1,0 +1,20 @@
+<p>
+  Welcome Administrator!<br/>
+  Here you will find everything you need to administer this Convention!
+</p>
+<h3>Current Active Gaming Year: <%= @gaming_year.year %>
+<h3>Registration Status: <%= @gaming_year.active? ? 'Open' : 'Closed' %> </h3>
+
+<h3>User Counts</h3>
+<ul>
+  <li>Registered: <%= @user_count %></li>
+  <li>Virtual Attendees: <%= @virtual_user_count %></li>
+  <li>Users seated at at least one table: <%= @attending_users_count %></li>
+</ul>
+
+<h3>Games Count: <%= @gaming_year.events.count %></h3>
+<ul>
+  <% @grouped_games.each do |game, count| %>
+    <%= content_tag(:li, "#{game}: #{count}" ) %>
+  <% end %>
+</ul>

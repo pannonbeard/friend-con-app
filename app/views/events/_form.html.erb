@@ -1,0 +1,78 @@
+<% if @event.errors.any? %>
+  <div class='notice danger'>
+    <p>Please fix the following Errors</p>
+    <ul>
+      <% @event.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= simple_form_for @event, url: @event.new_record? ? events_path : event_path(@event) do |f| %>
+  <%= f.input :gaming_year_id, as: :hidden %>
+  <%= f.input :user_id, as: :hidden %>
+  <div class='row'>
+    <div class='col-4'>
+      <%= f.input :title, wrapper_html: { class: 'field-group'} %>
+    </div>
+    <div class='col-4'>
+      <%= f.input :game_type, as: :select, collection: game_types, wrapper_html: { class: 'field-group'} %>
+    </div>
+    <div class='col-4'>
+      <%= f.input :system_name, wrapper_html: { class: 'field-group'} %>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-12'>
+      <%= f.input :description, wrapper_html: { class: 'field-group'}, input_html: { rows: 8 } %>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-6'>
+      <%= f.input :supplies_needed, label: 'Items Players Need', wrapper_html: { class: 'field-group'}, input_html: { rows: 5 } %>
+    </div>
+    <div class='col-6'>
+      <%= f.input :gm_needs, label: 'Game Master Needs', wrapper_html: { class: 'field-group'}, input_html: { rows: 5 } %>
+    </div>
+  </div>
+  
+  <div class='row'>
+    <div class='col-6'>
+      <%= f.input :day, as: :select, collection: days, wrapper_html: { class: 'field-group'} %>
+    </div>
+    <div class='col-6'>
+      <%= f.input :start_time, as: :time, html5: true, input_html: { min: '09:00', max: '21:45', list:'timelist' }, wrapper_html: { class: 'field-group'} %>
+      <datalist id='timelist'>
+        <% times_list.each do |time| %>
+          <option><%= time.strftime('%H:%M') %></option>
+        <% end %>
+      </dataList>
+    </div>
+    <div class='col-6'>
+      <%= f.input :event_length, as: :select, collection: time_frames, wrapper_html: { class: 'field-group'} %>
+    </div>
+    <div class='col-6'>
+      <%= f.input :seats_available, as: :select, collection: (5..24), wrapper_html: { class: 'field-group'} %>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-6'>
+      <%= f.input :virtual, as: :radio_buttons, wrapper_html: { class: 'field-group'}, label: 'Okay with virtual attendees?' %>
+    </div>
+  </div>
+
+  <% if current_user.role?(:admin) %>
+    <h3>Admin Use (only)</h3>
+    <div class='row'>
+      <div class='col-6'>
+        <%= f.input :table, as: :radio_buttons, collection: tables, wrapper_html: { class: 'field-group'}%>
+      </div>
+    </div>
+  <% end %>
+  <div class='row'>
+    <div class='col-3'>
+      <%= f.submit class: 'btn', data: {turbo: false} %>
+    </div>
+  </div>
+<% end %>

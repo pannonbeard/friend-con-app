@@ -1,0 +1,97 @@
+<h2>Catalog</h2>
+<% if @gaming_year.present? %>
+  <%= link_to 'Submit Event', new_event_path(gaming_year_id: @gaming_year.id), class: "btn" %>
+<% end %>
+
+<% if current_user.role?(:admin) %>
+  <%= link_to 'Back to Admin', admin_path, class: 'btn' %>
+<% end %>
+
+<div class='event-filter'>
+  <%= search_form_for @q, url: events_path, builder: SimpleForm::FormBuilder do |f| %>
+    <div class='row'>
+      <div class='col-3'>
+        <%= f.input :title_cont, wrapper_html: { class: 'field-group' }, label: 'Title Contains', required: false %>
+      </div>
+      <div class='col-3'>
+        <%= f.input :day_eq, as: :select, collection: days, wrapper_html: { class: 'field-group' }, label: 'Day', required: false %>
+      </div>
+      <div class='col-3'>
+        <%= f.input :game_type_eq, as: :select, collection: game_types, wrapper_html: { class: 'field-group' }, label: 'Game Type', required: false %>
+      </div>
+      <div class='col-3'>
+        <%= f.submit 'Search', class: "btn" %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<%= paginate @events %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>DM</th>
+      <th>Game Type</th>
+      <th>Seats Available</th>
+      <th>Table</th>
+      <th>Time Slot</th>
+      <th>Virtual Seating</th>
+      <% if current_user.role?(:admin) %>
+        <th>Virtual Seats</th>
+      <% end %>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @events.each do |event| %>
+      <tr>
+        <td data-label='Title'>
+          <%= link_to event.title, event %>
+          <% if event.system_name.present? %>
+            <span class='event-title-type'> <%= event.system_name %> </span>
+          <% end %>
+        </td>
+        <td data-label='DM'><%= event.user.name %></td>
+        <td data-label='Game Type'><%= event.game_type %></td>
+        <td data-label='Seats Available'><%= event.seating_numbers %></td>
+        <td data-label='Table'><%= event.table %></td>
+        <td data-label='Time Slot'><%= event.time_slot %></td>
+        <td data-label='Virtual Seating'><%= event.virtual? ? 'Yes' : 'No' %></td>
+        <% if current_user.role?(:admin) %>
+          <td data-label='Virtual Seats'><%= event.virtual_seats %></td>
+        <% end %>
+        <td data-label='Actions'>
+          <% if !current_user.seated_at_event(event) && !event.seating_filled && event.seating_open %>
+            <% event_available = current_user.already_seated(event) || (current_user.attending_virtually && !event.virtual)%>
+            <%= link_to seats_path(user_id: current_user.id, event_id: event.id), data: { turbo_method: 'post' }, class: "btn", disabled: event_available do %>
+              <% seat_text = 'Take a Seat' %>
+              <% seat_text = 'No Virtual Seating' if current_user.attending_virtually && !event.virtual %>
+              <% seat_text = 'Unavailable' if current_user.already_seated(event) %>
+              <%= seat_text %>
+            <% end %>
+          <% end %>
+          <% if current_user.seated_at_event(event) && event.user != current_user%>
+            <%= link_to 'Leave Table', current_user.seat(event), class:'btn', data: { turbo_method: 'delete' }%>
+          <% end %>
+          <% if event.seating_filled && !current_user.seated_at_event(event) %>
+            <div class='btn' disabled='disabled'> Seats Filled </div>
+          <% end %>
+          <% if can? :update, event %>
+            <%= link_to 'Edit', edit_event_path(event), class: 'btn' %>
+            <%= link_to 'Duplicate', duplicate_event_path(event), class: 'btn' %>
+          <% end %>
+          <% if can? :destroy, event %>
+            <%= link_to 'Remove', event, data: { turbo_method: 'delete', confirm: 'Are you sure you wish to remove this event?' }, class: 'btn' %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<% if @events.count == 0 %>
+  <p> Currently No events available </p>
+<% end %>
+
+<%= paginate @events %>

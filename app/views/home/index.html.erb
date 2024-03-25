@@ -1,0 +1,30 @@
+<div class='row'>
+  <div class='col-8 '>
+    <section class='home-message-board'>
+      <h2>Notice Boards</h2>
+      <% @notices.each do |notice| %>
+      <article class='message'>
+        <header>
+          <%= notice.header %>
+        </header>
+        <p><%= notice.description.html_safe %></p>
+      </article>
+      <% end %>
+    </section>
+  </div>
+  <div class='col-4'>
+    <section class='home-my-schedule'>
+      <h2>My Schedule</h2>
+      <% if @events.count.positive? %>
+        <% @events.each do |event| %>
+          <div class='home-schedule-event'>
+            <%= event.title %>
+            <span><%= event.time_slot.present? ? event.time_slot : 'Not placed yet'%></span>
+          </div>
+        <% end %>
+      <% else %>
+        <p>Currently no events...</p>
+      <% end %>
+    </section>
+  </div>
+</div>

@@ -1,0 +1,34 @@
+<h2>Notice Board</h2>
+<% if can? :create, Notice %>
+  <%= link_to 'Add Notice', new_notice_path, class: "btn" %>
+<% end %>
+
+<% if current_user.role?(:admin) %>
+  <%= link_to 'Back to Admin', admin_path, class: 'btn' %>
+<% end %>
+<table>
+  <thead>
+    <tr>
+      <th>Headlines</th>
+      <% if can? :manage, Notice %>
+        <th>
+          Actions
+        </th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% @notices.each do |notice| %>
+      <tr>
+        <td data-label='Title'><%= link_to notice.header_text, notice %></td>
+        <% if can? :manage, Notice%>
+          <td>
+            <%= link_to 'Edit', edit_notice_path(notice), class: "btn"%>
+            <%= link_to 'Remove', notice, data: { turbo_method: :delete, confirm: 'Are you sure you want to remove this notice?'}, class: "btn"%>
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+
+</table>

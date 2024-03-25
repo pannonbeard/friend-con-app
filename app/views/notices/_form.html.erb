@@ -1,0 +1,5 @@
+<%= simple_form_for @notice, url: @notice.new_record? ? notices_path : notice_path(@notice) do |f| %>
+  <%= f.input :title, wrapper_html: { class: "field-group" } %>
+  <%= f.input :description, wrapper_html: { class: "field-group" }, input_html: { rows: 8 } %>
+  <%= f.submit class: "btn" %>
+<% end %>
