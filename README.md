@@ -8,10 +8,14 @@ This application is our way to keep track of our silly little convention from ye
   - Ruby on Rails
   - PostgreSQL
 
-### Start up
-``` 
+## Setup
+```
 bundle install
 rails db:setup
+```
+
+### Start up
+``` 
 rails server 
 ```
 
