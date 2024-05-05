@@ -71,7 +71,6 @@ header{
     &.open{
       & ul {
         top: 9px;
-        z-index: 1;
       }
     }
 
@@ -111,10 +110,11 @@ header{
         position: relative;
         display: flex;
         background-color: transparent;
+        top: 0;
       }
       & a {
         width: fit-content;
-          border-bottom: 2px solid black;
+          border-bottom: 2px solid transparent;
         &:hover, &.active {
           border-color: white;
         }
