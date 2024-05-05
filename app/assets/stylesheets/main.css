@@ -185,6 +185,29 @@ header{
   }
 }
 
+.summer-edition-marker{
+  --shadow-offset: 4px;
+  --text-color: #fcef30;
+  --shadow-color: #8c35e8;
+  position: absolute;
+  top: 70%;
+  left: 10%;
+  z-index: -1;
+  color: var(--text-color);
+  display: inline-block;
+  padding: 1rem;
+  transform: rotate(35deg);
+  font-size: 3rem;
+  font-family: calibri;
+  font-weight: bold;
+  line-height: 2.5rem;
+  text-shadow: 
+    calc(-1 * var(--shadow-offset)) calc(-1 * var(--shadow-offset)) 0 var(--shadow-color), 
+    calc(var(--shadow-offset)) calc(-1 * var(--shadow-offset)) 0 var(--shadow-color), 
+    calc(-1 * var(--shadow-offset)) calc(var(--shadow-offset)) 0 var(--shadow-color), 
+    calc(var(--shadow-offset)) calc(var(--shadow-offset)) 0 var(--shadow-color);
+}
+
 /* Alerts */
 .alert{
   margin: 0;
