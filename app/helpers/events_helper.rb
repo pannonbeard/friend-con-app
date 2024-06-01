@@ -50,6 +50,6 @@ module EventsHelper
   end
 
   def game_types
-    ['Board Game', 'Card Game', 'Role Playing Game']
+    ['Board Game', 'Card Game', 'Role Playing Game', 'Other']
   end
 end
