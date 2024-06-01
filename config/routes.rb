@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :events do
     member do
       get 'duplicate'
+      get 'send_discord_notice'
     end
     collection do
       post 'validate_time'

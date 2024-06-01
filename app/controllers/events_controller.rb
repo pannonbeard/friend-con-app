@@ -55,6 +55,13 @@ class EventsController < ApplicationController
     render :new
   end
 
+  def send_discord_notice
+    @event = Event.find(params[:id])
+    @event.send_to_discord
+
+    redirect_to events_path, notice: 'Discord Message Sent'
+  end
+
   private
 
   def event_params
