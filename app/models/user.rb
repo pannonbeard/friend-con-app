@@ -29,11 +29,11 @@ class User < ApplicationRecord
   end
 
   def involved_events
-    [seated_events, events].flatten.sort_by{ |ev| [ev.day_of_week, ev.start_of_game, ev.title] }
+    [seated_events, events.current_year].flatten.sort_by{ |ev| [ev.day_of_week, ev.start_of_game, ev.title] }
   end
 
   def seated_events
-    seats.map(&:event)
+    seats.current_year.map(&:event)
   end
 
   def seated_at_event(event)

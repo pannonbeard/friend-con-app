@@ -11,4 +11,6 @@
 class Seat < ApplicationRecord
   belongs_to :user
   belongs_to :event
+
+  scope :current_year, -> { includes(event: [:gaming_year]).where(gaming_year: { active: true})}
 end
