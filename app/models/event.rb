@@ -28,11 +28,23 @@ class Event < ApplicationRecord
   
   serialize :willing_slots
 
+  after_create :send_to_discord
+
   validates :start_time, presence: true
 
   include Events::TimeMethods
   include Events::SeatingMethods
-  
+
+  def send_to_discord
+    webhook_url = Rails.application.credentials.discord_events_webhook
+
+    DiscordSend.send_message_to_webhook(webhook_url, discord_message)
+  end
+
+  def discord_message
+    ["# #{title}", description, "- #{time_slot}", "- GM:#{user.name}", "- #{game_type}", "- #{system_name}", "- Virtual Friendly: #{virtual? ? 'Yes' : 'No'}" ].join("\n")
+  end
+    
   def self.ransackable_attributes(auth_object = nil)
     ["created_at", "day", "description", "event_length", "game_type", "gaming_year_id", "gm_needs", "id", "seats_available", "start_time", "supplies_needed", "system_name", "table", "title", "updated_at", "user_id", "virtual", "willing_slots"]
   end
