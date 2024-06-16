@@ -4,13 +4,13 @@
   <%= link_to 'Edit Event', edit_event_path(@event), class: "btn" %>
 <% end %>
 
-<% if @event.user != current_user && @event.seating_open %>
+<% if current_user && @event.user != current_user && @event.seating_open %>
   <%= link_to seats_path(user_id: current_user.id, event_id: @event.id), data: { turbo_method: 'post' }, class: "btn", disabled: current_user.already_seated(@event) do %>
     <%= current_user.already_seated(@event) ? 'Unavailable' : 'Take a Seat'%>
   <% end %>
 <% end %>
 
-<% if current_user.seated_at_event(@event)%>
+<% if current_user&.seated_at_event(@event)%>
   <%= link_to 'Leave Table', current_user.seat(@event), class:'btn', data: { turbo_method: 'delete' }%>
 <% end %>
 
@@ -28,7 +28,7 @@
 <h3>Game Master</h3>
 <p><%= @event.user.name %></p>
 
-<% if current_user.role?(:admin) %>
+<% if current_user&.role?(:admin) %>
   <h3>Supplies Needed</h3>
   <p><%= @event.supplies_needed %></p>
 <% end %>

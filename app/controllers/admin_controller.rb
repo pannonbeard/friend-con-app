@@ -1,4 +1,6 @@
 class AdminController < ApplicationController
+  before_action :authenticate_user!
+  
   def index
     @gaming_year = GamingYear.where(active: true).last
     @user_count = User.count

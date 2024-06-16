@@ -3,7 +3,7 @@
   <%= link_to 'Submit Event', new_event_path(gaming_year_id: @gaming_year.id), class: "btn" %>
 <% end %>
 
-<% if current_user.role?(:admin) %>
+<% if current_user&.role?(:admin) %>
   <%= link_to 'Back to Admin', admin_path, class: 'btn' %>
 <% end %>
 
@@ -38,10 +38,12 @@
       <th>Table</th>
       <th>Time Slot</th>
       <th>Virtual Seating</th>
-      <% if current_user.role?(:admin) %>
+      <% if current_user&.role?(:admin) %>
         <th>Virtual Seats</th>
       <% end %>
-      <th>Actions</th>
+      <% if current_user %>
+        <th>Actions</th>
+      <% end %>
     </tr>
   </thead>
   <tbody>
@@ -59,36 +61,38 @@
         <td data-label='Table'><%= event.table %></td>
         <td data-label='Time Slot'><%= event.time_slot %></td>
         <td data-label='Virtual Seating'><%= event.virtual? ? 'Yes' : 'No' %></td>
-        <% if current_user.role?(:admin) %>
+        <% if current_user&.role?(:admin) %>
           <td data-label='Virtual Seats'><%= event.virtual_seats %></td>
         <% end %>
-        <td data-label='Actions'>
-          <% if !current_user.seated_at_event(event) && !event.seating_filled && event.seating_open %>
-            <% event_available = current_user.already_seated(event) || (current_user.attending_virtually && !event.virtual)%>
-            <%= link_to seats_path(user_id: current_user.id, event_id: event.id), data: { turbo_method: 'post' }, class: "btn", disabled: event_available do %>
-              <% seat_text = 'Take a Seat' %>
-              <% seat_text = 'No Virtual Seating' if current_user.attending_virtually && !event.virtual %>
-              <% seat_text = 'Unavailable' if current_user.already_seated(event) %>
-              <%= seat_text %>
+        <% if current_user %>
+          <td data-label='Actions'>
+            <% if !current_user&.seated_at_event(event) && !event.seating_filled && event.seating_open %>
+              <% event_available = current_user.already_seated(event) || (current_user.attending_virtually && !event.virtual)%>
+              <%= link_to seats_path(user_id: current_user.id, event_id: event.id), data: { turbo_method: 'post' }, class: "btn", disabled: event_available do %>
+                <% seat_text = 'Take a Seat' %>
+                <% seat_text = 'No Virtual Seating' if current_user.attending_virtually && !event.virtual %>
+                <% seat_text = 'Unavailable' if current_user.already_seated(event) %>
+                <%= seat_text %>
+              <% end %>
             <% end %>
-          <% end %>
-          <% if current_user.seated_at_event(event) && event.user != current_user%>
-            <%= link_to 'Leave Table', current_user.seat(event), class:'btn', data: { turbo_method: 'delete' }%>
-          <% end %>
-          <% if event.seating_filled && !current_user.seated_at_event(event) %>
-            <div class='btn' disabled='disabled'> Seats Filled </div>
-          <% end %>
-          <% if can? :update, event %>
-            <%= link_to 'Edit', edit_event_path(event), class: 'btn' %>
-            <%= link_to 'Duplicate', duplicate_event_path(event), class: 'btn' %>
-          <% end %>
-          <% if can? :destroy, event %>
-            <%= link_to 'Remove', event, data: { turbo_method: 'delete', confirm: 'Are you sure you wish to remove this event?' }, class: 'btn' %>
-          <% end %>
-          <% if current_user.role?(:admin) %>
-            <%= link_to 'Send to Discord', send_discord_notice_event_path(event), class: 'btn' %>
-          <% end %>
-        </td>
+            <% if current_user&.seated_at_event(event) && event.user != current_user%>
+              <%= link_to 'Leave Table', current_user.seat(event), class:'btn', data: { turbo_method: 'delete' }%>
+            <% end %>
+            <% if event.seating_filled && !current_user.seated_at_event(event) %>
+              <div class='btn' disabled='disabled'> Seats Filled </div>
+            <% end %>
+            <% if can? :update, event %>
+              <%= link_to 'Edit', edit_event_path(event), class: 'btn' %>
+              <%= link_to 'Duplicate', duplicate_event_path(event), class: 'btn' %>
+            <% end %>
+            <% if can? :destroy, event %>
+              <%= link_to 'Remove', event, data: { turbo_method: 'delete', confirm: 'Are you sure you wish to remove this event?' }, class: 'btn' %>
+            <% end %>
+            <% if current_user&.role?(:admin) %>
+              <%= link_to 'Send to Discord', send_discord_notice_event_path(event), class: 'btn' %>
+            <% end %>
+          </td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

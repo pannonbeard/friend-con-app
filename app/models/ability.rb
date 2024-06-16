@@ -4,6 +4,8 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
+    return unless user.present?
+
     user_rules(user)
     admin_rules if user.role?(:admin)
 
