@@ -34,7 +34,7 @@
 
 .event-filter{
   background: var(--primary-color);
-  border-top: 5px solid #6a28b0;
+  border-top: 5px solid var(--border-color);
   margin: 0.5rem 0;
   & label{
     color: white;

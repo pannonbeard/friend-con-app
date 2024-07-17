@@ -118,6 +118,10 @@ header{
         &:hover, &.active {
           border-color: white;
         }
+        &.active{
+          color: var(--secondary-color);
+          border-color: var(--secondary-color);
+        }
       }
     }
   }

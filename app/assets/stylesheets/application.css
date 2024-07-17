@@ -20,6 +20,7 @@
 }
 
 :root{
-  --primary-color: #8c35e8;
-  --secondary-color: #fcef30;
+  --primary-color: black; /* #8c35e8; */
+  --secondary-color: #79f711; /* #fcef30; */
+  --border-color: var(--secondary-color);
 }

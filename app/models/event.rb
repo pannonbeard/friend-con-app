@@ -41,7 +41,7 @@ class Event < ApplicationRecord
     DiscordSend.send_message_to_webhook(webhook_url, discord_message)
   end
 
-  scope :current_year, -> { includes(:gaming_year).where(gaming_year: { active: true})}
+  scope :current_year, -> { includes(:gaming_year).where(gaming_year: { active: true })}
 
   def discord_message
     ["# #{title}", description, "- #{time_slot}", "- GM:#{user.name}", "- #{game_type}", "- #{system_name}", "- Virtual Friendly: #{virtual? ? 'Yes' : 'No'}" ].join("\n")
