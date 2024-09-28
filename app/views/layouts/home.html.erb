@@ -10,7 +10,11 @@
       </div>
       <div class='hero-banner-text'>
         <h2>A Weekend of Adventure</h2>
-        <p>Nov 29 - Dec 31</p>
+        <% if @active_con %>
+          <p><%= @active_con.dates %></p>
+        <% else %>
+          <p>Nov 29 - Dec 1</p>
+        <% end %>
         <%# <span class='summer-edition-marker'>Summer<br /> Edition!!</span> %>
       </div>
     </div>

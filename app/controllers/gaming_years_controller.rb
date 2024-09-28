@@ -41,7 +41,7 @@ class GamingYearsController < ApplicationController
   private
 
   def gaming_year_params
-    params.require(:gaming_year).permit(:year, :active, :seating_open)
+    params.require(:gaming_year).permit(:year, :active, :seating_open, :start_date, :end_date)
   end
 end
 

@@ -8,6 +8,8 @@
       <th>Year</th>
       <th>Sign Up Key</th>
       <th>Sign Up Link</th>
+      <th>Start Date</th>
+      <th>End Date</th>
       <th>Active</th>
       <th>Seating Open</th>
       <th>Actions</th>
@@ -19,6 +21,8 @@
         <td data-label='Year'><%= gy.year %></td>
         <td data-label='Sign Up Key'><%= gy.signup_key %></td>
         <td data-label='Sign Up Link'><%= link_to 'Sign up link', new_user_registration_path(key: gy.signup_key) %></td>
+        <td data-label='Start Date'><%= gy.start_date %></td>
+        <td data-label='End Date'><%= gy.end_date %></td>
         <td data-label='Active'><%= gy.active? ? 'Active' : 'In Active' %></td>
         <td data-label='Seating Open'><%= gy.seating_open? ? 'Open' : 'Closed' %></td>
         <td data-label='Actions'>

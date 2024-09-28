@@ -12,6 +12,7 @@
 #  updated_at             :datetime         not null
 #  name                   :string
 #  attending_virtually    :boolean          default(FALSE)
+#  shirt_size             :string
 #
 class User < ApplicationRecord
   # Include default devise modules. Others available are:

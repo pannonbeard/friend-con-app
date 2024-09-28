@@ -12,6 +12,7 @@
 #  updated_at             :datetime         not null
 #  name                   :string
 #  attending_virtually    :boolean          default(FALSE)
+#  shirt_size             :string
 #
 
 # This model initially had no columns defined. If you add columns to the
