@@ -24,5 +24,8 @@ Rails.application.routes.draw do
   end
   resources :notices
   resources :seats
+
+  get "/service-worker.js" => "service_worker#service_worker"
+  get "/manifest.json" => "service_worker#manifest"
 end
 

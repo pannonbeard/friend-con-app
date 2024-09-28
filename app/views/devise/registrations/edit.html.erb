@@ -3,7 +3,7 @@
 <%= simple_form_for current_user, url: user_path(current_user) do |f| %>
   <%= f.input :name, wrapper_html: { class: "field-group"} %>
   <%= f.input :email, wrapper_html: { class: "field-group"} %>
-  <%= f.input :shirt_size, as: :select, collection: shirt_sizes, wrapper_html: { class: "field-group"} %>
+  <%= f.input :shirt_size, as: :select, collection: ['xsm', 'sm', 'md', 'lg', 'xl', 'xxl', 'xxxl', 'xxxxl', 'xxxxxl'], wrapper_html: { class: "field-group"} %>
   <%= f.input :attending_virtually, wrapper_html: { class: "field-group"}%>
   <%= f.submit 'Update', class: 'btn'%>
 <% end %>
