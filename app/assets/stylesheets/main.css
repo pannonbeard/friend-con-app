@@ -139,11 +139,11 @@ header{
 
 .main-logo{
   position: absolute;
-  opacity: 0.25;
-  top: -18rem;
+  opacity: 0.55;
   & img{
-    height: 50rem;
+    height: 30rem;
   }
+  filter: invert();
 }
 
 .hero-banner{
