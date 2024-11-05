@@ -28,7 +28,7 @@ class Event < ApplicationRecord
   
   serialize :willing_slots
 
-  after_create :send_to_discord
+  # after_create :send_to_discord
 
   validates :start_time, presence: true
 
@@ -36,7 +36,7 @@ class Event < ApplicationRecord
   include Events::SeatingMethods
 
   def send_to_discord
-    webhook_url = Rails.application.credentials.discord_events_webhook
+    webhook_url = 'https://discord.com/api/webhooks/1303166825881669744/UFswfhpZ6X-oKzxIeflvnfF8valHJccwWvcNxq5MpKXErWIHR_9840oatyhZ4eCtKqpC' ##Rails.application.credentials.discord_events_webhook
 
     DiscordSend.send_message_to_webhook(webhook_url, discord_message)
   end

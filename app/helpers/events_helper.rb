@@ -1,6 +1,6 @@
 module EventsHelper
   def tables
-    ['Table 1 Basement', 'Table 2 Basement', 'Table Living Room (Blend capable)', 'Table Spare Room (Blend capable)', 'Table Garage (Dranking Games)', 'Basement Bar Space']
+    ['Table 1 Basement', 'Table 2 Basement', 'Table 3 Basement', 'Basement Bar Space']
   end
 
   def time_slots 
@@ -16,7 +16,11 @@ module EventsHelper
       ['2 hours', 120], 
       ['3 hours', 180], 
       ['3.5 hours', 210], 
-      ['4 hours', 240]
+      ['4 hours', 240],
+      ['4.5 hours', 270],
+      ['5 hours', 300],
+      ['5.5 hours', 330],
+      ['6 hours', 360]
     ]
   end
 
