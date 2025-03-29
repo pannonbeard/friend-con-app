@@ -264,6 +264,9 @@ main{
 
   & .message{
     background: white;
+    * {
+      color: #353A3A;
+    }
 
     & p {
       padding: 1rem;
