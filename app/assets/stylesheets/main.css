@@ -5,6 +5,10 @@
   color: white;
 }
 
+:root{
+  --primary-text-color: #353A3A;
+}
+
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
   font-family: 'Angel rhapsody Regular', "futura-pt-bold", sans-serif;
   /* font-weight: 700; */
@@ -15,7 +19,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
 }
 
 body{
-  background: #353A3A;
+  background: var(--primary-text-color);
   color: white;
 }
 
@@ -265,7 +269,7 @@ main{
   & .message{
     background: white;
     * {
-      color: #353A3A;
+      color: var(--primary-text-color);
     }
 
     & p {
@@ -336,7 +340,7 @@ button, .btn {
 
   padding: 0.5rem 1rem;
   border-radius: 5px;
-  color: #353A3A;
+  color: var(--primary-text-color);
 
   text-transform: uppercase;
 
