@@ -3,6 +3,14 @@
   width: 100%;
   align-items: center;
   justify-content: space-evenly;
+  box-sizing: border-box;
+
+  .h2 {
+    font-size: 5rem !important;
+    @media (min-width: 900px) {
+      font-size: 8rem !important;      
+    }
+  }
 }
 
 
