@@ -94,3 +94,5 @@ gem "active_link_to", "~> 1.0"
 gem "ransack", "~> 4.0"
 
 gem "kaminari", "~> 1.2"
+
+gem "redcarpet", "~> 3.6"

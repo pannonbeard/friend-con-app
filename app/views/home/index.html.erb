@@ -7,7 +7,7 @@
         <header>
           <%= notice.header %>
         </header>
-        <p><%= notice.description.html_safe %></p>
+        <p><%= render_md(notice.description) %></p>
       </article>
       <% end %>
     </section>
