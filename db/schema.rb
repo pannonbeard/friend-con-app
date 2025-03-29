@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_09_28_170948) do
+ActiveRecord::Schema[7.0].define(version: 2025_03_29_151618) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -69,6 +69,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_09_28_170948) do
     t.index ["user_id"], name: "index_seats_on_user_id"
   end
 
+  create_table "user_gaming_years", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "gaming_year_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["gaming_year_id"], name: "index_user_gaming_years_on_gaming_year_id"
+    t.index ["user_id"], name: "index_user_gaming_years_on_user_id"
+  end
+
   create_table "user_roles", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "role_id", null: false
@@ -97,6 +106,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_09_28_170948) do
   add_foreign_key "events", "users"
   add_foreign_key "seats", "events"
   add_foreign_key "seats", "users"
+  add_foreign_key "user_gaming_years", "gaming_years"
+  add_foreign_key "user_gaming_years", "users"
   add_foreign_key "user_roles", "roles"
   add_foreign_key "user_roles", "users"
 end

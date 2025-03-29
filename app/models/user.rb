@@ -25,6 +25,13 @@ class User < ApplicationRecord
   has_many :events, dependent: :destroy
   has_many :seats, dependent: :destroy
 
+  has_many :user_gaming_years, dependent: :destroy
+  has_many :gaming_years, through: :user_gaming_years
+
+  def signed_up_for_year?(gaming_year)
+    user_gaming_years.find_by(gaming_year: gaming_year).present?
+  end
+
   def role?(name)
     roles.include? Role.find_by(name: name.to_s)
   end
