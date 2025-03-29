@@ -181,7 +181,11 @@ header{
   & .hero-banner-text{
     position: relative;
     z-index: 10;
-    padding: 3rem;
+    padding: 3rem 0;
+
+    @media (min-width: 900px){
+      padding: 3rem;
+    }
   }
 
   & h2, .h2{

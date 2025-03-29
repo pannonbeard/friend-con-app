@@ -1,9 +1,10 @@
 .emblem-holder{
   display: flex;
-  width: 100%;
   align-items: center;
   justify-content: space-evenly;
   box-sizing: border-box;
+  padding: 0 1rem;
+  max-width: 100%;
 
   .h2 {
     font-size: 5rem !important;
@@ -31,7 +32,7 @@
   perspective: 1000px;
   backface-visibility: hidden;
   height: 200px;
-  width: var(--coin-width);
+  width: 200px;
   transform-style: preserve-3d;
  
   .face{
@@ -70,36 +71,36 @@
     transform: translateZ(calc(var(--coin-thickness) / 2)) rotateY(90deg);
     
     &.left{
-      left: -9px;
+      left: -59px;
       top: 65px;
       
       &.top{
         top: -87px;
-        left: 65px;
+        left: 15px;
         rotate: 52.5deg;
         height: 190px;
       }
       
       &.bottom{
         top: 190px;
-        left: 65px;
+        left: 15px;
         rotate: -52.5deg;
         height: 190px;
       }
     }
     &.right{
-      right: -9px;
+      right: -59px;
       top: 65px;
       &.top{
         top: -87px;
-        right: 65px;
+        right: 15px;
         rotate: -52.5deg;
         height: 190px;
       }
       
       &.bottom{
         top: 190px;
-        right: 65px;
+        right: 15px;
         rotate: 52.5deg;
         height: 190px;
       }
