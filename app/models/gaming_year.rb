@@ -20,4 +20,6 @@ class GamingYear < ApplicationRecord
   def dates
     "#{start_date&.strftime('%b %e')} - #{end_date&.strftime('%b %e')}, #{year}"
   end
+
+  scope :current_gaming_year, -> { where(active: true).last}
 end

@@ -28,6 +28,13 @@ class User < ApplicationRecord
   has_many :user_gaming_years, dependent: :destroy
   has_many :gaming_years, through: :user_gaming_years
 
+  before_create :add_to_current_year
+
+  def add_to_current_year
+    current_year = GamingYear.current_gaming_year
+    gaming_years << current_year
+  end
+
   def signed_up_for_year?(gaming_year)
     user_gaming_years.find_by(gaming_year: gaming_year).present?
   end
