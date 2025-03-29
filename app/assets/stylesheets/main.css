@@ -276,7 +276,7 @@ main{
       color: var(--primary-text-color);
     }
 
-    & p {
+    p, h2, h3, h4, h5 {
       padding: 1rem;
       margin: 0;
     }
