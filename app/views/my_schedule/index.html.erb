@@ -2,7 +2,7 @@
   <h2>My Schedule</h2>
 
   <% @events.each do |event| %>
-    <div class='home-schedule-event'>
+    <div class='home-schedule-event common-radius'>
       <%= link_to event.title, event %>
       <span><%= event.time_slot.present? ? event.time_slot : 'Not placed yet'%></span>
     </div>

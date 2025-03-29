@@ -16,6 +16,6 @@ class GamingYear < ApplicationRecord
   has_many :events, dependent: :destroy
 
   def dates
-    "#{start_date&.strftime('%b %e')} - #{end_date&.strftime('%b %e')}"
+    "#{start_date&.strftime('%b %e')} - #{end_date&.strftime('%b %e')}, #{year}"
   end
 end

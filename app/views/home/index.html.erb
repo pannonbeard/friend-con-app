@@ -3,7 +3,7 @@
     <section class='home-message-board'>
       <h2>Notice Boards</h2>
       <% @notices.each do |notice| %>
-      <article class='message'>
+      <article class='message common-radius'>
         <header>
           <%= notice.header %>
         </header>
@@ -17,7 +17,7 @@
       <h2>My Schedule</h2>
       <% if @events.count.positive? %>
         <% @events.each do |event| %>
-          <div class='home-schedule-event'>
+          <div class='home-schedule-event common-radius'>
             <%= event.title %>
             <span><%= event.time_slot.present? ? event.time_slot : 'Not placed yet'%></span>
           </div>

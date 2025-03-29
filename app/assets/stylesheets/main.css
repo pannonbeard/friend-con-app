@@ -2,20 +2,21 @@
 
 *{
   font-family: Georgia, 'Times New Roman', Times, serif;
-  color: black;
+  color: white;
 }
 
-h1, h2, h3, h4, h5, h6{
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
   font-family: 'Angel rhapsody Regular', "futura-pt-bold", sans-serif;
   /* font-weight: 700; */
   /* font-style: normal; */
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid white;
   font-weight: normal;
+  color: white;
 }
 
 body{
-  background-position: top center;
-  background-repeat: no-repeat;
+  background: #353A3A;
+  color: white;
 }
 
 @media screen and (min-width){
@@ -26,6 +27,11 @@ body{
 
 .container{
   height: 100%;
+}
+
+.common-radius {
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 /* Header */
@@ -150,7 +156,6 @@ header{
   margin-top: 4.5rem;
   overflow: hidden;
   position: relative;
-  height: 400px;
   text-align: center;
   display: grid;
   place-items: center;
@@ -172,9 +177,10 @@ header{
   & .hero-banner-text{
     position: relative;
     z-index: 10;
+    padding: 3rem 0;
   }
 
-  & h2{
+  & h2, .h2{
     position: relative;
     z-index: 10;
     color: white;
@@ -183,6 +189,11 @@ header{
     margin: 0;
     padding: 0;
     border-color: white;
+  }
+
+  .h2 {
+    border-bottom: none;
+    font-size: 8rem;
   }
 
   & p {
@@ -280,10 +291,15 @@ main{
   padding: 0.5rem 0.75rem;
   margin-bottom: 0.25rem;
   border-bottom: 2px solid black;
+  color: black;
   & span{
     display: block;
     color: #777;
     font-size: 0.75rem;
+  }
+
+  & a {
+    color: black;
   }
 }
 
@@ -317,6 +333,7 @@ button, .btn {
 
   padding: 0.5rem 1rem;
   border-radius: 5px;
+  color: #353A3A;
 
   text-transform: uppercase;
 

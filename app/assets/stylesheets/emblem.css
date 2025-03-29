@@ -1,0 +1,128 @@
+.emblem-holder{
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+
+.coin-bounce{
+  animation: bounce 3s infinite;
+}
+
+.coin{
+  --coin-height: 300px;
+  --coin-width: 300px;
+  --coin-color: orange;
+  --coin-thickness: 1rem;
+  scale: .5;
+  animation: spin 5s infinite;
+  display: grid;
+  place-items: center;
+  display: relative;
+  perspective: 1000px;
+  backface-visibility: hidden;
+  height: 200px;
+  width: var(--coin-width);
+  transform-style: preserve-3d;
+ 
+  .face{
+    height: var(--coin-height);
+    width: var(--coin-width);
+    position: absolute;
+    
+    svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+    
+    &.front{
+      z-index: 1000;
+      display: grid;
+      place-items: center;
+      transform: translateZ(var(--coin-thickness));
+      img {
+        margin-top: 100px;
+        height: 200px;
+      }
+    }
+    
+    &.back{
+      transform: rotateY(180deg);
+    }
+  }
+  
+  .side{
+    position: absolute;
+    height: 162px;
+    background: #8B811A;
+    width: var(--coin-thickness);
+    transform: translateZ(calc(var(--coin-thickness) / 2)) rotateY(90deg);
+    
+    &.left{
+      left: -9px;
+      top: 65px;
+      
+      &.top{
+        top: -87px;
+        left: 65px;
+        rotate: 52.5deg;
+        height: 190px;
+      }
+      
+      &.bottom{
+        top: 190px;
+        left: 65px;
+        rotate: -52.5deg;
+        height: 190px;
+      }
+    }
+    &.right{
+      right: -9px;
+      top: 65px;
+      &.top{
+        top: -87px;
+        right: 65px;
+        rotate: -52.5deg;
+        height: 190px;
+      }
+      
+      &.bottom{
+        top: 190px;
+        right: 65px;
+        rotate: 52.5deg;
+        height: 190px;
+      }
+    }
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate3d(0, 1, 0, 0deg)
+  }
+  
+  100%{
+    transform: rotate3d(0, 1, 0, 360deg)
+  }
+}
+
+:root{
+  --bounce-travel: 25px;
+}
+
+@keyframes bounce {
+  0%{
+    transform: translateY(calc(-1 * var(--bounce-travel) - 10px));
+  }
+  
+  50% {
+    transform: translateY(var(--bounce-travel));
+  }
+  
+  100%{
+    transform: translateY(calc(-1 * var(--bounce-travel) - 10px));
+  }
+}
