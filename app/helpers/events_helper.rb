@@ -50,7 +50,7 @@ module EventsHelper
   end
 
   def days
-    ['Friday', 'Saturday', 'Sunday']
+    (@gaming_year.start_date...@gaming_year.end_date + 1.day).map { |date| date.strftime('%A') }.uniq
   end
 
   def game_types
