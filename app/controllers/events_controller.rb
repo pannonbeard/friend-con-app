@@ -28,6 +28,7 @@ class EventsController < ApplicationController
 
   def edit
     @event = Event.find(params[:id])
+    @gaming_year = @event.gaming_year
   end
 
   def update
