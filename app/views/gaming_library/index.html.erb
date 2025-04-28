@@ -1,0 +1,59 @@
+<h2>Gaming Library</h2>
+
+<p>
+  <strong>Welcome to the Gaming Library!</strong> <br/> Here you can find a collection of games available for play. 
+  Bringing your own games to share with others is encouraged.
+  If you have a game that you have brought along to share add it to the library.
+</p>
+
+<div style='display: flex; justify-content: space-between;'>
+  <%= link_to 'Add New Game', new_library_game_path, class: 'btn btn-primary' %>
+  <%= link_to 'Catalog', events_path, class: 'btn' %>
+</div>
+
+<div class='event-filter'>
+  <%= search_form_for @q, url: gaming_library_index_path, builder: SimpleForm::FormBuilder do |f| %>
+    <div class='row'>
+      <div class='col-3'>
+        <%= f.input :title_cont, wrapper_html: { class: 'field-group' }, label: 'Title Contains', required: false %>
+      </div>
+      <div class='col-3'>
+        <%= f.input :player_count_eq, wrapper_html: { class: 'field-group' }, label: 'Player Count', required: false %>
+      </div>
+      <div class='col-3'>
+        <%= f.input :game_type_eq, as: :select, collection: ["Board Game", "Card Game", "Drinking Game", "RPG"], wrapper_html: { class: 'field-group' }, label: 'Game Type', required: false %>
+      </div>
+      <div class='col-3 flex-end'>
+        <%= f.submit 'Search', class: "btn" %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Game Type</th>
+      <th>Player Count</th>
+      <th>Publisher</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @games.each do |game| %>
+      <tr>
+        <td><%= link_to game.title, library_game_path(game) %></td>
+        <td><%= game.game_type %></td>
+        <td><%= game.player_count %></td>
+        <td><%= game.publisher %></td>
+        <td>
+          <% if can? :update, game %>
+            <%= link_to 'Edit', edit_library_game_path(game), class: 'btn btn-secondary' %>
+            <%= link_to 'Delete', library_game_path(game), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

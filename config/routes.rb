@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   resources :gaming_years
+  resources :gaming_library, only: [:index]
+  resources :library_games, except: [:index]
+
   resources :users
   resources :events do
     member do

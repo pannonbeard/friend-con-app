@@ -43,6 +43,7 @@ class Ability
     can :update, User, id: user.id
     # can manage their own seats
     can [:update, :destroy], Seat, user_id: user.id
+    can [:update, :destroy], LibraryGame, user_id: user.id
     # can read notices
     can :read, Notice
   end

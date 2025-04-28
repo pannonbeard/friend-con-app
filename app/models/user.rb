@@ -28,6 +28,8 @@ class User < ApplicationRecord
   has_many :user_gaming_years, dependent: :destroy
   has_many :gaming_years, through: :user_gaming_years
 
+  has_many :library_games, dependent: :destroy
+
   before_create :add_to_current_year
 
   def add_to_current_year

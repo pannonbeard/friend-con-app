@@ -1,0 +1,28 @@
+<%= simple_form_for @library_game, url: @library_game.new_record? ? library_games_path : library_game_path(@library_game) do |f| %>
+  <div class='row'>
+    <div class='col-3'>
+      <%= f.input :title, wrapper_html: { class: 'field-group'} %>
+    </div>
+    <div class='col-3'>
+      <%= f.input :publisher, wrapper_html: { class: 'field-group'} %>
+    </div>
+    <div class='col-3'>
+      <%= f.input :player_count, wrapper_html: { class: 'field-group'} %>
+    </div>
+    <div class='col-3'>
+      <%= f.input :game_type, as: :select, collection: ["Board Game", "Card Game", "Drinking Game", "RPG"], wrapper_html: { class: 'field-group'} %>
+    </div>
+  </div>
+
+  <div class='row'>
+    <div class='col-12'>  
+    <%= f.input :supplies_needed, wrapper_html: { class: 'field-group'} %>
+    </div>
+  </div>
+
+  <div class='row'>
+    <div class='col-12'>
+      <%= f.submit class: 'btn' %>
+    </div>
+  </div>
+<% end %>

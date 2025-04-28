@@ -1,0 +1,33 @@
+# == Schema Information
+#
+# Table name: library_games
+#
+#  id                     :bigint           not null, primary key
+#  title                  :string
+#  publisher              :string
+#  player_count           :integer
+#  game_type              :string
+#  supplies_needed        :text
+#  user_id                :bigint           not null
+#  gaming_year_library_id :bigint           not null
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#
+
+one:
+  title: MyString
+  publisher: MyString
+  player_count: 1
+  game_type: MyString
+  supplies_needed: MyText
+  user: one
+  gaming_year_library: one
+
+two:
+  title: MyString
+  publisher: MyString
+  player_count: 1
+  game_type: MyString
+  supplies_needed: MyText
+  user: two
+  gaming_year_library: two

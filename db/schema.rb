@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2025_03_29_151618) do
+ActiveRecord::Schema[7.0].define(version: 2025_04_28_001011) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -36,6 +36,13 @@ ActiveRecord::Schema[7.0].define(version: 2025_03_29_151618) do
     t.index ["user_id"], name: "index_events_on_user_id"
   end
 
+  create_table "gaming_year_libraries", force: :cascade do |t|
+    t.bigint "gaming_year_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["gaming_year_id"], name: "index_gaming_year_libraries_on_gaming_year_id"
+  end
+
   create_table "gaming_years", force: :cascade do |t|
     t.integer "year"
     t.text "signup_key"
@@ -45,6 +52,20 @@ ActiveRecord::Schema[7.0].define(version: 2025_03_29_151618) do
     t.boolean "seating_open", default: false
     t.date "start_date"
     t.date "end_date"
+  end
+
+  create_table "library_games", force: :cascade do |t|
+    t.string "title"
+    t.string "publisher"
+    t.integer "player_count"
+    t.string "game_type"
+    t.text "supplies_needed"
+    t.bigint "user_id", null: false
+    t.bigint "gaming_year_library_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["gaming_year_library_id"], name: "index_library_games_on_gaming_year_library_id"
+    t.index ["user_id"], name: "index_library_games_on_user_id"
   end
 
   create_table "notices", force: :cascade do |t|
@@ -104,6 +125,9 @@ ActiveRecord::Schema[7.0].define(version: 2025_03_29_151618) do
 
   add_foreign_key "events", "gaming_years"
   add_foreign_key "events", "users"
+  add_foreign_key "gaming_year_libraries", "gaming_years"
+  add_foreign_key "library_games", "gaming_year_libraries"
+  add_foreign_key "library_games", "users"
   add_foreign_key "seats", "events"
   add_foreign_key "seats", "users"
   add_foreign_key "user_gaming_years", "gaming_years"

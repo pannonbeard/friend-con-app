@@ -1,4 +1,6 @@
 <h2>Catalog</h2>
+
+<div style='display: flex; gap: 0.5rem;'>
 <% if @gaming_year.present? %>
   <%= link_to 'Submit Event', new_event_path(gaming_year_id: @gaming_year.id), class: "btn" %>
 <% end %>
@@ -6,6 +8,9 @@
 <% if current_user&.role?(:admin) %>
   <%= link_to 'Back to Admin', admin_path, class: 'btn' %>
 <% end %>
+
+<%= link_to 'Open Games Library', gaming_library_index_path, class: 'btn', style: 'margin-left: auto'%>
+</div>
 
 <div class='event-filter'>
   <%= search_form_for @q, url: events_path, builder: SimpleForm::FormBuilder do |f| %>
