@@ -2,12 +2,22 @@ module Events
   module TimeMethods
     extend ActiveSupport::Concern
 
+    DAYS_OF_WEEK = {
+      'Monday' => 0,
+      'Tuesday' => 1,
+      'Wednesday' => 2,
+      'Thursday' => 3,
+      'Friday' => 4,
+      'Saturday' => 5,
+      'Sunday' => 6
+    }
+
     included do
       validate :durring_four_other_events
     end
 
     def day_of_week
-      day.present? ? day : 'Friday'
+      day.present? ? DAYS_OF_WEEK[day] : DAYS_OF_WEEK['Friday']
     end
   
     def start_of_game
