@@ -15,7 +15,7 @@ module Events
     end
 
     def end_time
-      end_time = start_time + event_length.minutes
+      end_time = event_length ? start_time + event_length.minutes : start_time + 30.minutes
     end
 
     def time_slot
