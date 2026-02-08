@@ -1,0 +1,75 @@
+<svg width="100%" height="40" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 1000 40">
+  <defs>
+    <filter id="paper-shadow">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="1"/>
+      <feOffset dx="0" dy="1" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.3"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Natural torn paper edge with irregular curves and fibers -->
+  <path d="M 0 0 
+           L 0 22
+           C 8 24, 12 19, 18 21
+           C 22 22, 28 18, 35 20
+           L 42 22
+           C 48 23, 52 17, 58 19
+           L 65 21
+           C 72 19, 78 24, 85 22
+           C 92 20, 98 25, 105 23
+           L 115 20
+           C 122 22, 128 18, 135 21
+           C 142 23, 148 19, 155 20
+           L 165 23
+           C 172 21, 178 26, 188 24
+           C 195 22, 202 20, 210 22
+           L 220 19
+           C 228 21, 235 17, 242 20
+           L 252 23
+           C 260 24, 268 19, 275 21
+           C 282 22, 290 18, 298 20
+           L 308 22
+           C 318 20, 325 24, 335 22
+           L 345 19
+           C 352 21, 360 23, 368 21
+           C 378 19, 385 25, 395 23
+           L 408 20
+           C 418 22, 425 18, 435 21
+           L 448 23
+           C 458 21, 468 19, 478 22
+           C 488 24, 498 20, 508 21
+           L 520 19
+           C 530 22, 540 18, 550 20
+           C 560 23, 570 21, 580 22
+           L 592 20
+           C 602 19, 612 24, 622 22
+           L 635 21
+           C 645 23, 655 19, 665 21
+           C 675 22, 685 20, 695 22
+           L 708 19
+           C 718 21, 728 23, 738 21
+           L 750 20
+           C 760 22, 770 18, 780 21
+           C 790 23, 800 20, 810 22
+           L 822 19
+           C 832 21, 842 24, 852 22
+           L 865 20
+           C 875 22, 885 19, 895 21
+           C 905 23, 915 20, 925 22
+           L 938 20
+           C 948 21, 958 19, 968 21
+           C 978 23, 988 21, 1000 22
+           L 1000 0
+           Z" 
+        fill="#e6d2a2" 
+        stroke="#b89b6d" 
+        stroke-width="0.5"
+        filter="url(#paper-shadow)"
+        vector-effect="non-scaling-stroke"/>
+</svg>

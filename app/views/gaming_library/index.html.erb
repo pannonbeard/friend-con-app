@@ -7,7 +7,7 @@
 </p>
 
 <div style='display: flex; justify-content: space-between;'>
-  <%= link_to 'Add New Game', new_library_game_path, class: 'btn btn-primary' %>
+  <%= link_to 'Add New Game', new_library_game_path, class: 'btn btn-primary' if current_user.present? %>
   <%= link_to 'Catalog', events_path, class: 'btn' %>
 </div>
 

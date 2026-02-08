@@ -3,11 +3,13 @@
     <section class='home-message-board'>
       <h2>Notice Boards</h2>
       <% @notices.each do |notice| %>
-      <article class='message common-radius'>
+      <article class='scroll'>
+        <div class='scroll-top'></div>
         <header>
           <%= notice.header %>
         </header>
         <p><%= render_md(notice.description) %></p>
+        <div class='scroll-bottom'></div>
       </article>
       <% end %>
     </section>

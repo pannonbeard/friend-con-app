@@ -1,0 +1,48 @@
+:root {
+--scroll-svg: url('<%= asset_path("border.svg") %>');
+}
+
+.scroll {
+  --border-width: 3px;
+  --border-color: #b89b6d;
+  --parchment-color: #e6d2a2;
+
+  --primary-text-color: black;
+
+  position: relative;
+  background: var(--parchment-color);
+  padding: 60px 30px 30px;
+  font-family: serif;
+
+  color: black;
+}
+
+.scroll-top {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top center;
+  pointer-events: none;
+  transform: rotate(180deg);
+
+   background-image: var(--scroll-svg);
+}
+
+.scroll-bottom {
+  position: absolute;
+  bottom: -40px;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top center;
+  pointer-events: none;
+  
+
+  background-image: var(--scroll-svg);
+}

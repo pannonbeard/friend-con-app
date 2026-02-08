@@ -4,25 +4,7 @@
 
   <body>
     <%= render 'layouts/head_nav' %>
-    <div class='hero-banner' style='background-image: url("<%= asset_path('FriendConBanner.png')%>")'>
-      <div class='hero-banner-text'>
-        <h2>A Weekend of Adventure</h2>
-
-        <div class='emblem-holder'>
-          <span class='h2'>F</span>
-          <%= render 'layouts/bouncing_emblem' %>
-          <span class='h2'>C</span>
-        </div>
-
-
-        <% if @active_con %>
-          <p><%= @active_con.dates %></p>
-        <% else %>
-          <p>No Active Conss</p>
-        <% end %>
-        <%# <span class='summer-edition-marker'>Summer<br /> Edition!!</span> %>
-      </div>
-    </div>
+    <div class='hero-banner'> </div>
     <main>
       <div class='container'>  
         <%= yield %>

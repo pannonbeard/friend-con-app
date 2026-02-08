@@ -2,25 +2,31 @@
 
 *{
   font-family: Georgia, 'Times New Roman', Times, serif;
-  color: white;
+  color: var(--primary-text-color);
 }
 
 :root{
   --primary-text-color: #353A3A;
+  --bg-color: #DEC597;
 }
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
   font-family: 'Angel rhapsody Regular', "futura-pt-bold", sans-serif;
   /* font-weight: 700; */
   /* font-style: normal; */
-  border-bottom: 2px solid white;
+  border-bottom: 2px solid var(--primary-text-color);
   font-weight: normal;
-  color: white;
+  color: var(--primary-text-color);
 }
 
 body{
-  background: var(--primary-text-color);
-  color: white;
+  /* background: var(--primary-text-color); */
+  background-color: var(--bg-color);
+  background-image: url(<%= image_path('circus-banner.png') %>);
+  background-repeat: no-repeat;
+  background-position: center -370px;
+  background-attachment: fixed;
+  background-size: calc(100% + 50px);
 }
 
 @media screen and (min-width){
@@ -100,10 +106,8 @@ header{
   width: 100%;
   z-index: 100;
   color: var(--secondary-color);
-  background: var(--primary-color);
-  & h1 {
-    color: var(--secondary-color);
-  }
+  background: oklch( from var(--primary-text-color) l c h / 0.5 );
+  primary-color);
 
 
 }
@@ -165,18 +169,9 @@ header{
   place-items: center;
   color: white;
 
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
+  height: 500px;
 
-  border-bottom: 4px solid var(--primary-color);
-
-  &::before{
-    position: absolute;
-    inset: 0;
-    content: '';
-    background: linear-gradient( rgba(0, 0, 0, 1) 1px, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 1));
-  }
+  // border-bottom: 4px solid var(--primary-color);
 
   & .hero-banner-text{
     position: relative;
@@ -252,35 +247,18 @@ header{
 main{
   min-height: 100%;
   padding-top: 4rem;
+
+
+  background-color: oklch( from var(--bg-color) l c h / 0.2 );
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 5px  oklch( from var(--bg-color) l c h / 0.2 );
+  
 }
 
 /* Main - Message Boards */
 .home-message-board{
   display: grid;
   gap: 1rem;
-  
-  padding-bottom: 1rem;
-  border-bottom: 2px solid black;
-
-  & header {
-    background-color: transparent;
-    color: black;
-    padding: 1rem;
-    font-size: 1.5rem;
-    border-bottom: 2px solid #ddd;
-  }
-
-  & .message{
-    background: white;
-    * {
-      color: var(--primary-text-color);
-    }
-
-    p, h2, h3, h4, h5 {
-      padding: 1rem;
-      margin: 0;
-    }
-  }
 }
 
 .updated-date{
@@ -374,6 +352,7 @@ table {
   border-collapse: collapse;
   width: 100%;
   margin: 0.5rem 0;
+  background-color: white;
   & th, & td {
     padding: 0.5rem;
     text-align: left;

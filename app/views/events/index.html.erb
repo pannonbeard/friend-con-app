@@ -1,7 +1,7 @@
 <h2>Catalog</h2>
 
 <div style='display: flex; gap: 0.5rem;'>
-<% if @gaming_year.present? %>
+<% if @gaming_year.present? && current_user.present?%>
   <%= link_to 'Submit Event', new_event_path(gaming_year_id: @gaming_year.id), class: "btn" %>
 <% end %>
 
