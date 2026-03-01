@@ -1,17 +1,33 @@
+<% content_for :header do %>
+  <div class='hero-banner'>
+    <%= image_tag 'mainbanner/bigtent.png', class: 'big-top', alt: '' %>
+    <%= image_tag 'mainbanner/clowncarnage.png', class: 'clowns', alt: '' %>
+
+    <div class='cover'></div>
+    <%= image_tag 'mainbanner/hecknahead.png', class: 'heckna-img', alt: '' %>
+    <%= image_tag 'mainbanner/hecknacircus.png', class: 'big-text', alt: '' %>
+    <%= image_tag 'mainbanner/hecknacircus.png', class: 'big-text', alt: "Heckna's Traveling Circus" %>
+    <%= image_tag 'mainbanner/datesbanner.png', class: 'banner', alt: 'Dates: Aug 14th to 16th 2026' %>
+
+  </div>
+<% end %>
+
 <div class='row'>
   <div class='col-8'>
     <section class='home-message-board'>
       <h2>Notice Boards</h2>
-      <% @notices.each do |notice| %>
-      <article class='scroll'>
-        <div class='scroll-top'></div>
-        <header>
-          <%= notice.header %>
-        </header>
-        <p><%= render_md(notice.description) %></p>
-        <div class='scroll-bottom'></div>
-      </article>
-      <% end %>
+      <div class='notices'>
+        <% @notices.each do |notice| %>
+          <article class='scroll'>
+            <div class='scroll-top'></div>
+            <header>
+              <%= notice.header %>
+            </header>
+            <p><%= render_md(notice.description) %></p>
+            <div class='scroll-bottom'></div>
+          </article>
+        <% end %>
+      </div>
     </section>
   </div>
   <div class='col-4'>
