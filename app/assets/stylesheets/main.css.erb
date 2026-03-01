@@ -8,6 +8,7 @@
 :root{
   --primary-text-color: #353A3A;
   --bg-color: #DEC597;
+  --background-image: url('<%= asset_path("insidethebigtop.png") %>')
 }
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
@@ -20,7 +21,12 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
 }
 
 body{
-  background: var(--bg-color);
+  background-color: var(--bg-color);
+  background-image: var(--background-image);
+  background-attachment: fixed;
+  background-position: 50% 70%;
+  background-repeat: no-repeat;
+  background-size: calc(100% + 100px);
 }
 
 @media screen and (min-width){
