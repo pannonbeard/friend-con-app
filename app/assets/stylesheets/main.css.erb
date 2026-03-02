@@ -110,7 +110,7 @@ header{
   width: 100%;
   z-index: 100;
   color: var(--secondary-color);
-  background: oklch( from var(--primary-text-color) l c h / 0.5 );
+  background: oklch( from var(--primary-text-color) l c h / 0.90 );
 }
 
 @media screen and (min-width: 1000px) {
@@ -170,7 +170,7 @@ header{
   place-items: center;
   color: white;
   height: 800px;
-  box-shadow: 0 4px 20px oklch(from black l c h / 0.75);
+  box-shadow: 0 4px 10px 10px black;
 
   background-image: url(<%= image_path('mainbanner/fairbg.png') %>);
   background-size: calc(100% + 100px);
@@ -234,6 +234,9 @@ header{
     left: 50%;
     transform: translateX(-50%);
 
+    animation: bounce 2s infinite ease-in-out;
+
+
     @media (max-width: 1200px){
       width: 100%;
       top: -100px;
@@ -246,6 +249,8 @@ header{
       transform: translateX(-50%);
     }
   }
+
+
 
   
   .big-text{
@@ -266,20 +271,32 @@ header{
   }
 
   .banner{
+    display: block;
     position: absolute;
     bottom: 25px;
-    height: 250px;
+    
+    width: 100%;
+    img {
+      height: 250px;
+    }
 
     @media (max-width: 1200px){
       bottom: 0px;
-      width: 80%;
-      height: auto;
+      img {
+        width: 80%;
+        height: auto;
+      }
     }
     
     @media (max-width: 800px){
       height: auto;
       width: 100%;
       bottom: 100px;
+
+      img {
+        width: 100%;
+        height: auto;
+      }
     }
   }
 
@@ -321,6 +338,15 @@ header{
 
   & + main{
     padding-top: 1rem;
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0) translateX(-50%);
+  }
+  50% {
+    transform: translateY(-10px) translateX(-50%);
   }
 }
 
