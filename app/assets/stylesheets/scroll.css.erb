@@ -27,3 +27,24 @@
     padding: 0;
   }
 }
+
+
+.page-bg {
+  --parchment-color: #e6d2a2;
+  --background-img: url('<%= asset_path("note-bg.webp") %>');
+
+  --primary-text-color: black;
+
+  position: relative;
+  background: var(--parchment-color);
+  padding: 10px;
+  font-family: serif;
+
+  border-style: solid;
+  border-width: 10px 10px 10px 10px;
+  -moz-border-image: var(--background-img) 10 10 10 10 fill stretch stretch;
+  -webkit-border-image: var(--background-img) 10 10 10 10 fill stretch stretch;
+  -o-border-image: var(--background-img) 10 10 10 10 fill stretch stretch;
+  border-image: var(--background-img) 10 10 10 10 fill stretch stretch;
+
+}

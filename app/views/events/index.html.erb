@@ -1,18 +1,18 @@
 <h2>Catalog</h2>
 
 <div style='display: flex; gap: 0.5rem;'>
-<% if @gaming_year.present? && current_user.present?%>
-  <%= link_to 'Submit Event', new_event_path(gaming_year_id: @gaming_year.id), class: "btn" %>
-<% end %>
+  <% if @gaming_year.present? && current_user.present?%>
+    <%= link_to 'Submit Event', new_event_path(gaming_year_id: @gaming_year.id), class: "btn" %>
+  <% end %>
 
-<% if current_user&.role?(:admin) %>
-  <%= link_to 'Back to Admin', admin_path, class: 'btn' %>
-<% end %>
+  <% if current_user&.role?(:admin) %>
+    <%= link_to 'Back to Admin', admin_path, class: 'btn' %>
+  <% end %>
 
-<%= link_to 'Open Games Library', gaming_library_index_path, class: 'btn', style: 'margin-left: auto'%>
+  <%= link_to 'Open Games Library', gaming_library_index_path, class: 'btn', style: 'margin-left: auto'%>
 </div>
 
-<div class='event-filter'>
+<div class='page-bg' style='margin-block: 1rem;'>
   <%= search_form_for @q, url: events_path, builder: SimpleForm::FormBuilder do |f| %>
     <div class='row'>
       <div class='col-3'>
@@ -33,7 +33,7 @@
 
 <%= paginate @events %>
 
-<table class='common-radius'>
+<table class='common-radius page-bg'>
   <thead>
     <tr>
       <th>Title</th>

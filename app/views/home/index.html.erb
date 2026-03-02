@@ -37,7 +37,7 @@
       <h2>My Schedule</h2>
       <% if @events.count.positive? %>
         <% @events.each do |event| %>
-          <div class='home-schedule-event common-radius'>
+          <div class='home-schedule-event page-bg'>
             <%= event.title %>
             <span><%= event.time_slot.present? ? event.time_slot : 'Not placed yet'%></span>
           </div>
