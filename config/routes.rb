@@ -5,6 +5,12 @@ Rails.application.routes.draw do
   get 'my_schedule', to: 'my_schedule#index'
   get 'admin', to: 'admin#index'
   devise_for :users, controllers: { sessions: 'custom_sessions'}
+
+  namespace "passwordless" do
+    devise_for :users,
+      controllers: { sessions: "devise/passwordless/sessions" }
+  end
+
   root 'home#index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

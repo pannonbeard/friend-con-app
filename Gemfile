@@ -96,3 +96,5 @@ gem "ransack", "~> 4.0"
 gem "kaminari", "~> 1.2"
 
 gem "redcarpet", "~> 3.6"
+
+gem "devise-passwordless", "~> 1.1"

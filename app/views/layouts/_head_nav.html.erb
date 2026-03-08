@@ -14,7 +14,7 @@
         <li><%= active_link_to 'Home', root_path, active: :exclusive %></li>
         <li><%= active_link_to 'Catalog', events_path, active: :exclusive %></li>
         <% if current_user %>
-          <li><%= active_link_to 'Profile', edit_user_registration_path, active: :exclusive %></li>
+          <li><%#= active_link_to 'Profile', edit_user_registration_path, active: :exclusive %></li>
           <li><%= active_link_to 'My Schedule', my_schedule_path, active: :exclusive %></li>
           <% if current_user.role?(:admin)%>
             <li><%= active_link_to 'Admin', admin_path, active: :exclusive %></li>

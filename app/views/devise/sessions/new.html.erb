@@ -2,6 +2,18 @@
   <div class='sign-up-in-holder hovering-box'>
     <h2>Log in</h2>
 
+    <%= form_for resource, as: resource_name, url: passwordless_user_session_path, method: :post do |f| %>
+      <div class="field-group">
+        <%= f.label :email %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      </div>
+      <div class="actions">
+        <%= f.submit "Send me a magic link", class: 'btn' %>
+      </div>
+    <% end %>
+
+    <h3>Or, sign in with user credentials</h3>
+
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="field-group">
         <%= f.label :email %>
@@ -25,6 +37,7 @@
       </div>
     <% end %>
 
+  
     <%= render "devise/shared/links" %>
   </div>
 </div>
