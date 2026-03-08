@@ -38,14 +38,10 @@
     <tr>
       <th>Title</th>
       <th>DM</th>
-      <th>Game Type</th>
+      <th>Event Type</th>
       <th>Seats Available</th>
       <th>Table</th>
       <th>Time Slot</th>
-      <th>Virtual Seating</th>
-      <% if current_user&.role?(:admin) %>
-        <th>Virtual Seats</th>
-      <% end %>
       <% if current_user %>
         <th>Actions</th>
       <% end %>
@@ -61,21 +57,16 @@
           <% end %>
         </td>
         <td data-label='DM'><%= event.user.name %></td>
-        <td data-label='Game Type'><%= event.game_type %></td>
+        <td data-label='Event Type'><%= event.game_type %></td>
         <td data-label='Seats Available'><%= event.seating_numbers %></td>
         <td data-label='Table'><%= event.table %></td>
         <td data-label='Time Slot'><%= event.time_slot %></td>
-        <td data-label='Virtual Seating'><%= event.virtual? ? 'Yes' : 'No' %></td>
-        <% if current_user&.role?(:admin) %>
-          <td data-label='Virtual Seats'><%= event.virtual_seats %></td>
-        <% end %>
         <% if current_user %>
           <td data-label='Actions'>
             <% if !current_user&.seated_at_event(event) && !event.seating_filled && event.seating_open %>
               <% event_available = current_user.already_seated(event) || (current_user.attending_virtually && !event.virtual)%>
               <%= link_to seats_path(user_id: current_user.id, event_id: event.id), data: { turbo_method: 'post' }, class: "btn", disabled: event_available do %>
                 <% seat_text = 'Take a Seat' %>
-                <% seat_text = 'No Virtual Seating' if current_user.attending_virtually && !event.virtual %>
                 <% seat_text = 'Unavailable' if current_user.already_seated(event) %>
                 <%= seat_text %>
               <% end %>

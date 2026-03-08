@@ -14,6 +14,7 @@ module EventsHelper
       ['1 hour', 60], 
       ['1.5 hours', 90], 
       ['2 hours', 120], 
+      ['2.5 hours', 150], 
       ['3 hours', 180], 
       ['3.5 hours', 210], 
       ['4 hours', 240],
@@ -54,6 +55,6 @@ module EventsHelper
   end
 
   def game_types
-    ['Board Game', 'Card Game', 'Role Playing Game', 'Other']
+    ['Board Game', 'Card Game', 'Role Playing Game', 'Book Club', 'Party Game', 'Outdoor Activity', 'Other']
   end
 end

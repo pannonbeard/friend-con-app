@@ -5,7 +5,7 @@ class GamingYearsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @gaming_years = GamingYear.all
+    @gaming_years = GamingYear.order(start_date: :desc)
   end
 
   def new

@@ -56,14 +56,14 @@
       <%= f.input :seats_available, as: :select, collection: (3..18), wrapper_html: { class: 'field-group'} %>
     </div>
   </div>
-  <div class='row'>
-    <div class='col-6'>
-      <%= f.input :virtual, as: :radio_buttons, wrapper_html: { class: 'field-group'}, label: 'Okay with virtual attendees?' %>
-    </div>
-  </div>
 
   <% if current_user.role?(:admin) %>
     <h3>Admin Use (only)</h3>
+    <div class='row'>
+      <div class='col-6'>
+        <%= f.input :virtual, as: :radio_buttons, wrapper_html: { class: 'field-group'}, label: 'Okay with virtual attendees?' %>
+      </div>
+    </div>
     <div class='row'>
       <div class='col-6'>
         <%= f.input :table, as: :radio_buttons, collection: tables, wrapper_html: { class: 'field-group'}%>
