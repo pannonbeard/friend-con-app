@@ -26,7 +26,7 @@ class Event < ApplicationRecord
   belongs_to :gaming_year
   has_many :seats, dependent: :destroy
   
-  serialize :willing_slots
+  serialize :willing_slots, coder: YAML
 
   # after_create :send_to_discord
 
