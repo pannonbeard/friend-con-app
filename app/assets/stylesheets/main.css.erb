@@ -45,7 +45,6 @@ body{
 
 .common-radius {
   border-radius: 10px;
-  overflow: hidden;
 }
 
 /* Header */
@@ -492,6 +491,29 @@ button, .btn {
     background: #ccc;
     cursor: not-allowed;
     pointer-events: none;
+  }
+}
+
+.btn-group{
+  position: relative;
+  display: inline-block;
+  & button, & .btn {
+    display: inline-block;
+    margin: 0;
+  }
+
+  .btn-dropdown{
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 100;
+    display: none;
+  }
+
+  &[aria-expanded=true]{
+    .btn-dropdown{
+      display: grid;
+    }
   }
 }
 
