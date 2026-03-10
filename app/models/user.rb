@@ -15,10 +15,11 @@
 #  shirt_size             :string
 #
 class User < ApplicationRecord
+  has_secure_password
+  has_many :sessions, dependent: :destroy
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :magic_link_authenticatable
+  # devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable, :magic_link_authenticatable
 
   has_many :user_roles, dependent: :destroy
   has_many :roles, through: :user_roles
@@ -31,6 +32,8 @@ class User < ApplicationRecord
   has_many :library_games, dependent: :destroy
 
   before_create :add_to_current_year
+
+  normalizes :email_address, with: ->(e) { e.strip.downcase }
 
   def add_to_current_year
     current_year = GamingYear.current_gaming_year
