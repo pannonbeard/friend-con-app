@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_03_09_033851) do
+ActiveRecord::Schema[8.1].define(version: 2026_03_11_002120) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -75,6 +75,17 @@ ActiveRecord::Schema[8.1].define(version: 2026_03_09_033851) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "one_time_logins", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "expires_at"
+    t.string "token"
+    t.datetime "updated_at", null: false
+    t.boolean "used", default: false
+    t.bigint "user_id", null: false
+    t.string "uuid"
+    t.index ["user_id"], name: "index_one_time_logins_on_user_id"
+  end
+
   create_table "roles", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "name"
@@ -137,6 +148,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_03_09_033851) do
   add_foreign_key "gaming_year_libraries", "gaming_years"
   add_foreign_key "library_games", "gaming_year_libraries"
   add_foreign_key "library_games", "users"
+  add_foreign_key "one_time_logins", "users"
   add_foreign_key "seats", "events"
   add_foreign_key "seats", "users"
   add_foreign_key "sessions", "users"

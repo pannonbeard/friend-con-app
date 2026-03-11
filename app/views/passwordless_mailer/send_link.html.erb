@@ -1,0 +1,9 @@
+<h1>One Time Login link!</h1>
+
+<p>
+  Here is your link! <%= link_to 'Sign Me in', one_time_pass_url(@one_time_login.uuid, @one_time_login.token) %>
+</p>
+
+<p>
+  Or copy and paste this into your browser: <%= one_time_pass_url(@one_time_login.uuid, @one_time_login.token) %>
+</p>

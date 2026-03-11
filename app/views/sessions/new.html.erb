@@ -1,6 +1,3 @@
-<%= tag.div(flash[:alert], style: "color:red") if flash[:alert] %>
-<%= tag.div(flash[:notice], style: "color:green") if flash[:notice] %>
-
 <div class='sign-up-in'>
   <div class='sign-up-in-holder'>
     <h2>Sign in</h2>
@@ -16,5 +13,9 @@
     <br>
 
     <%= link_to "Forgot password?", new_password_path %>
+
+    <div class='actions'>
+      <%= link_to "Sign in with Magic Link", new_passwordless_path, class: 'btn' %>
+    </div>
   </div>
 </div>

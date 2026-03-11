@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  allow_unauthenticated_access only: %i[ new create ]
+  allow_unauthenticated_access only: %i[ new create passwordless_login ]
   rate_limit to: 10, within: 3.minutes, only: :create, with: -> { redirect_to new_session_path, alert: "Try again later." }
 
   def new
@@ -11,6 +11,19 @@ class SessionsController < ApplicationController
       redirect_to after_authentication_url
     else
       redirect_to new_session_path, alert: "Try another email address or password."
+    end
+  end
+
+  def passwordless_login
+    token = OneTimeLogin.find_by(uuid: params[:uuid], token: params[:token])
+    if token && !token.used && !token.expired?
+      token.used = true
+      token.save
+
+      start_new_session_for token.user
+      redirect_to root_path
+    else
+      redirect_to new_session_path, notice: 'Invalid link.'
     end
   end
 

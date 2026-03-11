@@ -22,9 +22,9 @@
 }
 
 .actions{
+  margin-top: 0.5rem;
   padding: 1rem 0;
-  border-bottom: 2px solid #ddd;
-  margin-bottom: 0.5rem;
+  border-top: 2px solid #ddd;
 }
 
 @media screen and (min-width: 800px){

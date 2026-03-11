@@ -1,0 +1,14 @@
+<div class='sign-up-in'>
+  <div class='sign-up-in-holder'>
+    <h2>Request One Time Password</h2>
+
+    <%= tag.div(flash[:alert], style: "color:red") if flash[:alert] %>
+
+    <%= form_with url: passwordless_path, method: :post do |form| %>
+      <div class='field-group'>
+        <%= form.email_field :email, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email] %>
+      </div>
+      <%= form.submit "Send me my link Naive!", class: 'btn' %>
+    <% end %>
+  </div>
+</div>
