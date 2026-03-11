@@ -16,6 +16,8 @@ class PasswordlessesController < ApplicationController
       PasswordlessMailer.send_link(login).deliver_now
 
       redirect_to new_session_path, notice: 'You should receive an email shortly with your login link.'
+    else
+      redirect_to new_session_path, notice: 'No user with that email found.'
     end 
   end
 end
