@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+  allow_unauthenticated_access only: [:index, :show]
   def index
     @gaming_year = GamingYear.where(active: true).first
     @q = @gaming_year.events.includes(:user, :seats, :gaming_year).ransack(params[:q])
