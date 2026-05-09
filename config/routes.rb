@@ -108,6 +108,7 @@
 #                     rails_direct_uploads POST   /rails/active_storage/direct_uploads(.:format)                                                    active_storage/direct_uploads#create
 
 Rails.application.routes.draw do
+  get "registration/index"
   resource :session
   resource :passwordless
 
@@ -116,12 +117,9 @@ Rails.application.routes.draw do
   resources :passwords, param: :token
   get 'my_schedule', to: 'my_schedule#index'
   get 'admin', to: 'admin#index'
-  # devise_for :users, controllers: { sessions: 'custom_sessions'}
 
-  # namespace "passwordless" do
-  #   devise_for :users,
-  #     controllers: { sessions: "devise/passwordless/sessions" }
-  # end
+  get 'user_registration', to: 'registration#new', as: :new_user_registration, param: :key
+  post 'register_user', to: 'registration#create', as: :register
 
   root 'home#index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

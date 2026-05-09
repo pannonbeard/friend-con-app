@@ -1,0 +1,17 @@
+<div class='page-bg'>
+  <h2>Register</h2>
+
+  <%= simple_form_for @user, url: register_path do |f| %>
+    <input type='hidden' name='registration_key' value='<%= params[:key] %>' />
+    <%= f.input :name, wrapper_html: { class: "field-group"} %>
+    <%= f.input :email, wrapper_html: { class: "field-group"} %>
+    <%= f.input :shirt_size, as: :select, collection: ['xsm', 'sm', 'md', 'lg', 'xl', 'xxl', 'xxxl', 'xxxxl', 'xxxxxl'], wrapper_html: { class: "field-group"} %>
+    <%= f.input :attending_virtually, wrapper_html: { class: "field-group"} %>
+
+    <%= f.input :password, wrapper_html: { class: "field-group"} %>
+    <%= f.input :password_confirmation, wrapper_html: { class: "field-group"} %>
+
+
+    <%= f.submit "Register", class: "btn" %>
+  <% end %>
+</div>
