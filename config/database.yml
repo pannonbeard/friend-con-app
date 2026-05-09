@@ -25,8 +25,13 @@ default: &default
   host: 127.0.0.1
 
 development:
-  <<: *default
-  database: friend_con_app_development
+  primary: &primary_development
+    <<: *default
+    database: friend_con_app_development
+  errors:
+    <<: *primary_development
+    database: friend_con_app_errors
+    migrations_paths: db/errors_migrate
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -83,7 +88,12 @@ test:
 # for a full overview on how database connection configuration can be specified.
 #
 production:
-  <<: *default
-  database: friend_con_app_production
-  username: friend_con_app
-  password: <%= ENV["FRIEND_CON_APP_DATABASE_PASSWORD"] %>
+  primary: &primary_production
+    <<: *default
+    database: friend_con_app_production
+    username: friend_con_app
+    password: <%= ENV["FRIEND_CON_APP_DATABASE_PASSWORD"] %>
+  errors:
+    <<: *primary_production
+    database: friend_con_app_errors
+    migrations_paths: db/errors_migrate

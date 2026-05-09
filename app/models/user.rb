@@ -42,6 +42,10 @@ class User < ApplicationRecord
     user_gaming_years.find_by(gaming_year: gaming_year).present?
   end
 
+  def admin?
+    role?(:admin)
+  end
+
   def role?(name)
     roles.include? Role.find_by(name: name.to_s)
   end
