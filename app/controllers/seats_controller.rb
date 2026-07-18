@@ -1,6 +1,4 @@
-class SeatsController < ApplicationController
-  before_action :authenticate_user!
-  
+class SeatsController < ApplicationController 
   def create
     @seat = Seat.new(seat_params)
     @seat.save
