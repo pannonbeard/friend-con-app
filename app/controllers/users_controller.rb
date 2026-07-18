@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     @user.update(user_params)
 
     if current_user == @user
-      redirect_to edit_user_registration_path, notice: 'Account Updated'
+      redirect_to edit_user_path, notice: 'Account Updated'
     else
       redirect_to users_path, notice: 'Account Updated'
     end
