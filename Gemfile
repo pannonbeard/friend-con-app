@@ -99,4 +99,4 @@ gem "redcarpet", "~> 3.6"
 # gem "devise", "~> 4.9"
 # gem "devise-passwordless", "~> 1.1"
 
-gem "solid_errors", "~> 0.7.0"
+# gem "solid_errors", "~> 0.7.0"

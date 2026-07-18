@@ -28,10 +28,6 @@ development:
   primary: &primary_development
     <<: *default
     database: friend_con_app_development
-  errors:
-    <<: *primary_development
-    database: friend_con_app_development_errors
-    migrations_paths: db/errors_migrate
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -93,7 +89,3 @@ production:
     database: friend_con_app_production
     username: friend_con_app
     password: <%= ENV["FRIEND_CON_APP_DATABASE_PASSWORD"] %>
-  errors:
-    <<: *primary_production
-    database: friend_con_app_production_errors
-    migrations_paths: db/errors_migrate
