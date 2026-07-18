@@ -146,8 +146,6 @@ Rails.application.routes.draw do
 
   get "/service-worker.js" => "service_worker#service_worker"
   get "/manifest.json" => "service_worker#manifest"
-
-  mount SolidErrors::Engine, at: "/solid_errors"
   
 end
 
