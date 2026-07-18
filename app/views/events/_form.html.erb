@@ -65,7 +65,7 @@
     <h3>Admin Use (only)</h3>
     <div class='row'>
       <div class='col-6'>
-        <%= f.input :user, as: :select, collection: User.all, wrapper_html: { class: 'field-group'}, label: "GM", label_method: :name %>
+        <%= f.association :user, as: :select, collection: User.order(:name), wrapper_html: { class: 'field-group'}, label: "GM", label_method: :name %>
       </div>
     </div>
     <div class='row'>
